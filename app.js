@@ -158,64 +158,73 @@ function freeze(){
 
 //to make the shapes move down
 function moveDown(){
+    if(playPauseButton.innerHTML == "Pause"){
     undraw();
     currentPosition+=width;
     draw();
     freeze();
+    }
 }
 
 
 function control(e){
-    if(playPauseButton.innerHTML == "Pause"){
-        if(e.keyCode === 38){
-            rotate();
-        }else if (e.keyCode === 37){
-            moveLeft();
-        }else if(e.keyCode === 39){
-            moveRight();
-        }else if(e.keyCode === 40){
-            moveDown();
-        }
+    
+     if(e.keyCode === 38){
+        rotate();
+    }else if (e.keyCode === 37){
+        moveLeft();
+    }else if(e.keyCode === 39){
+        moveRight();
+    }else if(e.keyCode === 40){
+        moveDown();
     }
+    
 }
 
 //to make it rotate
 function rotate(){
-    undraw();
-    currentRotation++;
-    if(currentRotation === current.length){
-        currentRotation = 0;
+    if(playPauseButton.innerHTML == "Pause"){
+        undraw();
+        currentRotation++;
+        if(currentRotation === current.length){
+            currentRotation = 0;
+        }
+        current = shapes[random][currentRotation];
+        draw();
     }
-    current = shapes[random][currentRotation];
-    draw();
 }
 
 //to make it move right
 function moveRight(){
-    undraw();
-    const rightEdge = current.some(index => (currentPosition+index)%width ===width-1);
-    if(!rightEdge){
-       currentPosition +=1;
+    if(playPauseButton.innerHTML == "Pause"){
+        undraw();
+        const rightEdge = current.some(index => (currentPosition+index)%width ===width-1);
+        if(!rightEdge){
+            currentPosition +=1;
+        }
+        if(current.some(index=>squares[currentPosition + index].classList.contains('last'))){
+            currentPosition -=1;
+        }
+        draw();
+        freeze();
     }
-    if(current.some(index=>squares[currentPosition + index].classList.contains('last'))){
-        currentPosition -=1;
-    }
-    draw();
-    freeze();
 }
 
 //to make it move left
 function moveLeft(){
-    undraw();
-    const leftEdge = current.some(index=>(currentPosition + index)%width === 0);
-    if(!leftEdge){
-        currentPosition -=1;
+    if(playPauseButton.innerHTML == "Pause"){
+        undraw();
+        const leftEdge = current.some(index=>(currentPosition + index)%width === 0);
+        if(!leftEdge){
+            currentPosition -=1;
+        }
+        if(current.some(index=>squares[currentPosition + index].classList.contains('last'))){
+            currentPosition -=1;
+        }
+        draw();
+        freeze();
     }
-    if(current.some(index=>squares[currentPosition + index].classList.contains('last'))){
-        currentPosition -=1;
-    }
-    draw();
-    freeze();
+    
 }
 
 
