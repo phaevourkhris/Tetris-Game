@@ -33,7 +33,7 @@
     margin-bottom: 15px;
 }
 
-#play-pause-button{
+#play-pause-button, #up, #down, #left, #right{
     background: cyan;
     /* width: 80px; */
     padding: 4px;
@@ -45,7 +45,11 @@
     font-family: monospace;
     /* letter-spacing: 5px; */
 }
-#play-pause-button:hover{
+#play-pause-button:hover,
+#up:hover,
+#down:hover,
+#left:hover,
+#right:hover{
     cursor: pointer;
     background: rgb(87, 177, 177);
 }
@@ -137,4 +141,28 @@
     width: 100%;
     text-align: right;
     padding: 5px;
+}
+
+.control-buttons{
+    margin-top: 10px;
+    text-align: center;
+    background: black;
+    padding: 5px;
+    border: 1px solid cyan;
+}
+
+.control-buttons div{
+    display: flex;
+    justify-content: space-between;
+}
+
+#up, #down{
+    width:30%;
+    display: block;
+    margin: 0 auto;
+}
+
+#left, #right{
+    width: 30%;
+    margin: 5px 0px;
 }

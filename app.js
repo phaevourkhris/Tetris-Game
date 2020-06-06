@@ -6,6 +6,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const gameoverPrompt = document.getElementById('gameover-prompt');
     const width = 10;
     const playPauseButton = document.getElementById('play-pause-button');
+    const upButton = document.getElementById('up');
+    const downButton = document.getElementById('down');
+    const leftButton = document.getElementById('left');
+    const rightButton = document.getElementById('right');
     let nextRandom = 0;
     let timerId;
     let score = 0;
@@ -128,8 +132,12 @@ function undraw(){
     }
 }
 
-//to make the shapes move right or left at key stroke
+//to make the shapes move right or left at key stroke or by clicking button
 document.addEventListener('keydown', control);
+upButton.addEventListener('click', rotate);
+downButton.addEventListener('click', moveDown);
+leftButton.addEventListener('click', moveLeft);
+rightButton.addEventListener('click', moveRight);
 
 //to freeze shapes once it touches the last row 
 function freeze(){
